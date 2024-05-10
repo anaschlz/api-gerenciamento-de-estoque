@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-n#c2gof$shyt-b-pbachb1)l-4s0-vip6z&dw$i1!=xntfthfi
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '.vercel.app'
+    '.vercel.app', 
+    'localhost', 
+    '127.0.0.1'
 ]
 
 
@@ -81,8 +83,12 @@ WSGI_APPLICATION = 'api_root.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'estoque',
+        'USER': 'postgres',
+        'PASSWORD': 'schulz',
+        'HOST': 'localhost',  # ou o endereço do seu servidor PostgreSQL
+        'PORT': '5432',       # ou a porta em que o PostgreSQL está ouvindo
     }
 }
 
