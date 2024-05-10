@@ -11,6 +11,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DEBUG = os.environ.get('DEBUG') == 'True'
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,8 +27,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n#c2gof$shyt-b-pbachb1)l-4s0-vip6z&dw$i1!=xntfthfi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -84,11 +90,11 @@ WSGI_APPLICATION = 'api_root.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'estoque',
-        'USER': 'postgres',
-        'PASSWORD': 'schulz',
-        'HOST': 'localhost',  # ou o endereço do seu servidor PostgreSQL
-        'PORT': '5432',       # ou a porta em que o PostgreSQL está ouvindo
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST':  os.environ.get('POSTGRES_HOST'),
+        'PORT': '5432',
     }
 }
 
