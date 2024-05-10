@@ -9,6 +9,8 @@ from .serializers import ProductSerializer
 
 import json
 
+def paginaInicial(request):
+    return render(request, "index.html")
 
 @api_view(['GET'])
 def get_products(request):
